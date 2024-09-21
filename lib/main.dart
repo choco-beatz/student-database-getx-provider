@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:student_database/controller/binding.dart';
 import 'package:student_database/view/screens/home_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  GetxBinding().dependencies();
   runApp(const MyApp());
 }
 
@@ -11,8 +15,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-    
+    return GetMaterialApp(
+      initialBinding: GetxBinding(),
+      debugShowCheckedModeBanner: false,
       home: Home(),
     );
   }
