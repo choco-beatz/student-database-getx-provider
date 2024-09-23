@@ -1,21 +1,30 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:student_database/constants/colors.dart';
 
 class Profile extends StatelessWidget {
-  
-  const Profile({super.key});
+  final String image;
+  final String name;
+  final String department;
+  final String email;
+  const Profile(
+      {super.key,
+      required this.image,
+      required this.name,
+      required this.department,
+      required this.email});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-     
-          title: const Text(
-            'PROFILE',
-            style: TextStyle(color: white),
-          ),
-          backgroundColor: black,
+        foregroundColor: white,
+        title: const Text(
+          'PROFILE',
         ),
+        backgroundColor: black,
+      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(25),
@@ -26,30 +35,32 @@ class Profile extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              CircleAvatar(
-                radius: 80,
-                // backgroundImage: student.imgurl != null
-                // ? FileImage(File(student.imgurl!))
-                // : null,
-                // child: student.imgurl == null ? const Icon(Icons.camera_alt_outlined) : null,
+              CircleAvatar(radius: 80, backgroundImage: FileImage(File(image))),
+              const SizedBox(
+                height: 25,
+              ),
+              Text(
+                name,
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
               ),
               const SizedBox(
                 height: 25,
               ),
               Text(
-                "student.name",
-              style: const TextStyle(fontSize: 20),),
-             const SizedBox(
-                height: 25,
+                'Department : $department',
+                style: const TextStyle(fontSize: 15),
               ),
-              Text("student.department",
-              style: const TextStyle(fontSize: 15),),
               const SizedBox(
                 height: 25,
               ),
-              Text('student.email',
-              style: const TextStyle(fontSize: 20),)
-            ],),),
+              Text(
+                'Contact : $email',
+                style: const TextStyle(fontSize: 15),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

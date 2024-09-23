@@ -5,7 +5,7 @@ class Student {
   final int age;
   final String department;
   final String email;
-  final String? imgurl;
+  final String imgurl;
 
   //CONSTRUCTOR FOR INITIALIZATION
   Student(
@@ -14,7 +14,7 @@ class Student {
       required this.age,
       required this.department,
       required this.email,
-      this.imgurl});
+      required this.imgurl});
 
   //TO EXTRACT VALUES FROM MAP(TO FETCH DATA FROM DB)
  static fromMap(Map<String, dynamic> std) {

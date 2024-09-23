@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:student_database/provider/provider.dart';
 import 'package:student_database/view/screens/home_screen.dart';
 
 void main() {
@@ -11,9 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-    
-      home: Home(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => DBProvider()..init())
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+      ),
     );
   }
 }
