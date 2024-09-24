@@ -103,19 +103,23 @@ class Controller extends GetxController {
   void search(String name) {
     List<Student> result = [];
 
-    if (name.isNotEmpty) {
+    if (name.isEmpty) {
+      studentFound.value = List.from(student);
+      
+      return;
+    }
       result = studentFound.value
           .where((element) => element.name
               .toString()
               .toLowerCase()
               .contains(name.toLowerCase()))
           .toList();
-    } else {
+     if (result.length != studentFound.value.length ||
+        !result.every((student) => studentFound.value.contains(student))){
       log(studentFound.value.toString());
-      studentFound.value = List.from(student);
+       studentFound.value = result;
+      imagePath = ''.obs;
     }
-    log(studentFound.value.toString());
-    studentFound.value = result;
   }
 
   void resetController() {

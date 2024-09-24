@@ -14,7 +14,6 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.resetController();
     return Scaffold(
         appBar: AppBar(
           foregroundColor: white,
